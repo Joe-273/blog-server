@@ -12,7 +12,7 @@ module.exports = () => async (ctx, next) => {
       expiresIn: maxAge,
     });
     // 添加到响应头
-    ctx.set('authorization', token);
+    ctx.set('authentication', token);
   }
   await next();
 };
