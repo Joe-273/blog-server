@@ -89,3 +89,12 @@ exports.multipart = {
   mode: 'file',
   tmpdir: path.resolve(__dirname, '../app', './public', 'upload_temp'),
 };
+
+// 评论、留言的限制
+exports.messageLimit = {
+  // 60秒内可以请求3次，如果到达3次，将在300秒内无法再次请求，超过次数会响应错误消息：您的操作过于频繁，请稍后再试
+  duration: 60,
+  times: 3,
+  message: '您的操作过于频繁，请稍后再试',
+  limit: 300,
+};

@@ -29,10 +29,20 @@ module.exports = (app) => {
   router.put('/api/blog/:id', auth, controller.blog.update);
   router.delete('/api/blog/:id', auth, controller.blog.remove);
   router.get('/api/blog', controller.blog.index);
+  router.get('/api/blog/:id', controller.blog.find);
 
   // captcha
   router.get('/res/captcha', controller.captcha.index);
 
   // upload
   router.post('/api/upload', auth, controller.upload.index);
+
+  // comment
+  router.post('/api/comment', app.middleware.limit(), controller.message.add);
+  router.delete('/api/comment/:id', auth, controller.message.remove);
+  router.get('/api/comment', controller.message.findComments);
+  // message
+  router.post('/api/message', app.middleware.limit(), controller.message.add);
+  router.delete('/api/message/:id', auth, controller.message.remove);
+  router.get('/api/message', controller.message.findMessages);
 };

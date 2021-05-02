@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const md5 = require('md5');
+const fs = require('fs');
+const path = require('path');
 // monkey toJSON
 const originToJSON = mongoose.Document.prototype.toJSON;
 mongoose.Document.prototype.toJSON = function (...args) {
@@ -62,6 +64,15 @@ class AppBootHook {
     }
   }
 
+  initAvatars() {
+    const allows = ['.png', '.gif', '.jpg', '.png', '.webp', '.bmp', '.svg'];
+    const files = fs
+      .readdirSync(path.resolve(__dirname, './app/public/avatar'))
+      .filter((name) => allows.includes(path.extname(name).toLowerCase()))
+      .map((name) => `${this.app.config.static.prefix}avatar/${name}`);
+    this.app.config.avatars = files;
+  }
+
   willReady() {
     // 初始化管理员
     this.initAdmin();
@@ -71,6 +82,9 @@ class AppBootHook {
 
     // 初始化上传目录
     this.mkUpload();
+
+    // 初始化头像数据
+    this.initAvatars();
   }
 }
 

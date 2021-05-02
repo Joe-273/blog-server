@@ -15,6 +15,13 @@ class BlogService extends Service {
     return await this.ctx.model.Blog.findById(id).populate('categoryId');
   }
 
+  async increaseScanNumber(id) {
+    await this.ctx.model.Blog.updateOne(
+      { _id: id },
+      { $inc: { scanNumber: 1 } }
+    );
+  }
+
   async add(info) {
     this.validate(
       {
@@ -107,13 +114,13 @@ class BlogService extends Service {
 
   async pager(options) {
     options = this.getPagerOptions(options);
-    if (options.categoryId == -1 || !options.categoryId) {
-      options.categoryId = -1;
+    if (options.categoryid == -1 || !options.categoryid) {
+      options.categoryid = -1;
     }
     options.keyword = options.keyword ? options.keyword.trim() : '';
     const filter = {};
-    if (options.categoryId !== -1) {
-      filter.categoryId = options.categoryId;
+    if (options.categoryid !== -1) {
+      filter.categoryId = options.categoryid;
     }
     if (options.keyword) {
       filter['$or'] = [

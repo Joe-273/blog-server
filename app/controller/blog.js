@@ -17,6 +17,7 @@ class BlogController extends Controller {
   }
 
   async find() {
+    await this.ctx.service.blog.increaseScanNumber(this.ctx.params.id);
     this.ctx.body = await this.ctx.service.blog.find(this.ctx.params.id);
   }
 
