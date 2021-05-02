@@ -107,6 +107,8 @@ class BlogService extends Service {
           { $inc: { articleCount: -1 } }
         );
       }
+      // 删除分类下的所有评论
+      await this.ctx.model.Message.remove({ blogId: blog._id });
       await blog.remove();
     }
     return true;
