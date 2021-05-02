@@ -54,6 +54,18 @@ class AppBootHook {
     }
   }
 
+  // 初始化关于我信息
+  async initAbout() {
+    const About = this.app.model.About;
+    const count = await About.countDocuments();
+    if (!count) {
+      await About.create({
+        url: '',
+      });
+      console.log('关于我信息初始化成功');
+    }
+  }
+
   mkUpload() {
     const fs = require('fs');
     const path = require('path');
@@ -82,6 +94,9 @@ class AppBootHook {
 
     // 初始化上传目录
     this.mkUpload();
+
+    // 初始化关于我信息
+    this.initAbout();
 
     // 初始化头像数据
     this.initAvatars();

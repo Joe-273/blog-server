@@ -41,8 +41,13 @@ module.exports = (app) => {
   router.post('/api/comment', app.middleware.limit(), controller.message.add);
   router.delete('/api/comment/:id', auth, controller.message.remove);
   router.get('/api/comment', controller.message.findComments);
+
   // message
   router.post('/api/message', app.middleware.limit(), controller.message.add);
   router.delete('/api/message/:id', auth, controller.message.remove);
   router.get('/api/message', controller.message.findMessages);
+
+  // about
+  router.post('/api/about', auth, controller.about.update);
+  router.get('/api/about', controller.about.find);
 };
