@@ -1,9 +1,23 @@
 const path = require('path');
 
-// use for cookie sign key, should change to your own and keep security
+// 用于加密的秘钥
 exports.keys = 'mysite-server_1619336153310_6069';
 
-// add your middleware config here
+// 初始化的管理员信息
+exports.admin = {
+  loginId: 'admin',
+  loginPwd: '123123',
+  name: '超级管理员',
+};
+
+// 启动后监听的端口号
+exports.cluster = {
+  listen: {
+    port: 7001,
+  },
+};
+
+// 中间件配置
 exports.middleware = ['responseFomatter'];
 exports.responseFomatter = {
   ignore: ['/static', '/res'],
@@ -15,13 +29,6 @@ exports.mongoose = {
   options: {
     useUnifiedTopology: true,
   },
-};
-
-// 初始化的管理员信息
-exports.admin = {
-  loginId: 'admin',
-  loginPwd: '123123',
-  name: '超级管理员',
 };
 
 // 自定义错误处理
