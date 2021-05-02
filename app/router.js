@@ -50,4 +50,10 @@ module.exports = (app) => {
   // about
   router.post('/api/about', auth, controller.about.update);
   router.get('/api/about', controller.about.find);
+
+  // demo
+  router.post('/api/project', auth, controller.demo.add);
+  router.put('/api/project/:id', auth, controller.demo.update);
+  router.delete('/api/project/:id', auth, controller.demo.remove);
+  router.get('/api/project', controller.demo.index);
 };

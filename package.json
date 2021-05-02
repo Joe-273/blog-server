@@ -29,13 +29,7 @@
     "start": "egg-scripts start --daemon --title=egg-server-mysite-server",
     "stop": "egg-scripts stop --title=egg-server-mysite-server",
     "dev": "egg-bin dev",
-    "debug": "egg-bin debug",
-    "test": "npm run lint -- --fix && npm run test-local",
-    "test-local": "egg-bin test",
-    "cov": "egg-bin cov",
-    "lint": "eslint .",
-    "ci": "npm run lint && npm run cov",
-    "autod": "autod"
+    "debug": "egg-bin debug"
   },
   "ci": {
     "version": "10"
