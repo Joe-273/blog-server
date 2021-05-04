@@ -56,4 +56,8 @@ module.exports = (app) => {
   router.put('/api/project/:id', auth, controller.demo.update);
   router.delete('/api/project/:id', auth, controller.demo.remove);
   router.get('/api/project', controller.demo.index);
+
+  // banner
+  router.post('/api/banner', auth, controller.banner.update);
+  router.get('/api/banner', controller.banner.index);
 };
