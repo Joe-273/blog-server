@@ -35,5 +35,5 @@ module.exports = ({ mongoose }) => {
     }
     return obj;
   };
-  return mongoose.model('Blog', BlogSchema);
+  return mongoose.model('Blog', BlogSchema,'blog');
 };

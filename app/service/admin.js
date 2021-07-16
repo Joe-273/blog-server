@@ -2,7 +2,7 @@ const md5 = require('md5');
 const Service = require('../core/BaseService');
 
 class AdminService extends Service {
-  async login(loginId, loginPwd) {
+  async login({loginId, loginPwd}) {
     return await this.ctx.model.Admin.findOne({
       loginId,
       loginPwd: md5(loginPwd),

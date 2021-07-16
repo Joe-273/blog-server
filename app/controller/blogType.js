@@ -5,6 +5,10 @@ class BlogTypeController extends Controller {
     this.ctx.body = await this.ctx.service.blogType.add(this.ctx.request.body);
   }
 
+  async findOne() {
+    this.ctx.body = await this.ctx.service.blogType.findOne(this.ctx.params.id);
+  }
+
   async update() {
     this.ctx.body = await this.ctx.service.blogType.update(
       this.ctx.params.id,

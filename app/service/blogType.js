@@ -1,7 +1,7 @@
 const Service = require('../core/BaseService');
 
 class BlogTypeService extends Service {
-  async add({ name, order = 0 } = {}) {
+  async add({ name, order = 1 } = {}) {
     if (!name) {
       this.throw(406, 'name is empty');
     }
@@ -10,6 +10,10 @@ class BlogTypeService extends Service {
       order,
       articleCount: 0,
     });
+  }
+
+  async findOne(_id) {
+    return await this.ctx.model.BlogType.findById(_id);
   }
 
   async update(_id, info) {

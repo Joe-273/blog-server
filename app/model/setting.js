@@ -21,5 +21,5 @@ module.exports = ({ mongoose }) => {
       strict: true,
     }
   );
-  return mongoose.model('Setting', SettingSchema);
+  return mongoose.model('Setting', SettingSchema, 'setting');
 };

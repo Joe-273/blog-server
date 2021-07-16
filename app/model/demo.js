@@ -16,5 +16,5 @@ module.exports = ({ mongoose }) => {
       strict: true,
     }
   );
-  return mongoose.model('Demo', DemoSchema);
+  return mongoose.model('Demo', DemoSchema, 'project');
 };

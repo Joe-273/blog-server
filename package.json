@@ -12,6 +12,7 @@
     "egg-scripts": "^2.11.0",
     "egg-validate": "^2.0.2",
     "jsonwebtoken": "^8.5.1",
+    "markdown-toc": "^1.2.0",
     "md5": "^2.3.0",
     "svg-captcha": "^1.4.0"
   },

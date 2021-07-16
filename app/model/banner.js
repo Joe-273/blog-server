@@ -14,5 +14,5 @@ module.exports = ({ mongoose }) => {
       strict: true,
     }
   );
-  return mongoose.model('Banner', BannerSchema);
+  return mongoose.model('Banner', BannerSchema, "banner");
 };

@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 
 module.exports = () => async (ctx, next) => {
   const body = ctx.request.body;
-  const user = await ctx.service.admin.login(body.loginId, body.loginPwd);
+  const user = await ctx.service.admin.login(body);
   ctx.user = user;
   if (user) {
     const remember = +body.remember || 1;

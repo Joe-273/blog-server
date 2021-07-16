@@ -11,7 +11,7 @@ function randomName() {
     .substr(2, 5)}`;
 }
 
-class CaptchaController extends Controller {
+class UploadController extends Controller {
   async index() {
     const { ctx } = this;
     if (!ctx.request.files || ctx.request.files.length === 0) {
@@ -20,6 +20,8 @@ class CaptchaController extends Controller {
     if (ctx.request.files.length > 1) {
       ctx.app.error.throw(406, '服务端目前仅支持单个文件上传');
     }
+    
+
     // 处理上传逻辑
     const file = ctx.request.files[0];
     const name = randomName();
@@ -30,6 +32,18 @@ class CaptchaController extends Controller {
     await fs.promises.rename(file.filepath, dest);
     ctx.body = url;
   }
+
+  async addUploadImageURL(){
+    this.ctx.body = await this.ctx.service.upload.add(this.ctx.request.body);
+  }
+
+  async findAllImageURL(){
+    this.ctx.body = await this.ctx.service.upload.findAll();
+  }
+
+  async removeImage(){
+    this.ctx.body = await this.ctx.service.upload.delImage(this.ctx.params.id);
+  }
 }
 
-module.exports = CaptchaController;
+module.exports = UploadController;

@@ -3,7 +3,7 @@ const Controller = require('egg').Controller;
 class AdminController extends Controller {
   async login() {
     const { ctx } = this;
-    ctx.body = ctx.user;
+    ctx.body = await ctx.service.admin.login(ctx.request.body);
   }
 
   async profile() {

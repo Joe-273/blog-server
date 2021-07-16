@@ -13,5 +13,5 @@ module.exports = ({ mongoose }) => {
       strict: true,
     }
   );
-  return mongoose.model('BlogType', BlogTypeSchema);
+  return mongoose.model('BlogType', BlogTypeSchema, "blogType");
 };

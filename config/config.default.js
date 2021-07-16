@@ -80,7 +80,7 @@ exports.static = {
 
 // multipart for uploaders
 exports.multipart = {
-  fileSize: '1mb', // max size 2mb
+  fileSize: '2mb', // max size 2mb
   whitelist: [
     // images
     '.jpg',
